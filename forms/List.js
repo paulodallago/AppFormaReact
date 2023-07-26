@@ -1,59 +1,80 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, Alert, ActivityIndicator } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import { vh, vw, bgColor } from '../components/Constants';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Modal from '../components/Modal';
+import ListButton from '../components/ListButton';
+import { lgBlue, dkBlue } from '../components/Constants';
+
+const items = [
+  {
+    "nome": "Jorge",
+    "cpf": '12312312313',
+    "email": "jorge@gmail.com"
+  },
+  {
+    "nome": "Pedro",
+    "cpf": '66666666666',
+    "email": "pedro@gmail.com"
+  }
+];
+
+const emptyObj = {
+  "nome": "",
+  "cpf": "",
+  "tipo": ""
+}
 
 const styles = StyleSheet.create({
-  main: {
-    width: vw * 80,
-    alignSelf: 'center',
-    flex: 1,
-    marginTop: 5 * vh,
+  rndButton: {
+    alignSelf: 'end',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '10vh',
+    height: '10vh',
+    backgroundColor: lgBlue,
+    borderRadius: '5vh',
+    marginEnd: 15,
+    marginBottom: 15,
+    elevation: 5
   },
+  btnText: {
+    fontSize: 40,
+    marginBottom: 8,
+    color: 'white'
+  }
 });
 
 const List = ({ navigation }) => {
-  const [piada, setPiada] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(emptyObj);
 
-  useEffect(() => {
-    fetch('https://official-joke-api.appspot.com/random_joke')
-      .then((response) => response.json())
-      .then((json) => {
-        const joke = {
-          setup: json.setup,
-          punchline: json.punchline,
-        };
-        setPiada(joke);
-        setLoading(false);
-      })
-      .catch(() => {
-        Alert.alert('Error fetching joke');
-        setLoading(false);
-      });
-  }, []);
+  const showItem = (item) => {
+    setSelectedItem(item);
+    setModalVisible(true);
+  };
 
-  if (loading) {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large"/>
-      </View>
-    );
-  }
+  const showEmptyObj = () => {
+    setSelectedItem(emptyObj);
+    setModalVisible(true);
+  };
 
   return (
-    <ScrollView style={{ backgroundColor: bgColor }}>
-      <View style={styles.main}>
-        {piada ? (
-          <>
-            <Text>{piada.setup}</Text>
-            <Text>{piada.punchline}</Text>
-          </>
-        ) : (
-          <Text>No joke available</Text>
-        )}
+    <View style={{ flex: 1 }}>
+      <View style={{flex: 1, marginTop: 20}}>
+        {items.map((item, index) => (
+          <ListButton key={index} item={item} onPress={() => showItem(item)} />
+        ))}
       </View>
-    </ScrollView>
+      <View>
+        <TouchableOpacity style={styles.rndButton} onPress={showEmptyObj}>
+          <Text style={styles.btnText}>+</Text>
+        </TouchableOpacity>
+      </View>
+      <Modal
+        show={modalVisible}
+        close={() => setModalVisible(false)}
+        data={selectedItem}
+      />
+    </View>
   );
 };
 

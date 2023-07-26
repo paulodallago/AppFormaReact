@@ -25,7 +25,7 @@ const TextField = props =>  {
   return (
     <View>
       <MyText style={styles.label} text={props.text}/>
-      <TextInput style={styles.textInput} onChangeText={props.onChangeText} keyboardType={props.keyboard}></TextInput>
+      <TextInput style={styles.textInput} defaultValue={props.defaultValue} onChangeText={props.onChangeText} keyboardType={props.keyboard}></TextInput>
     </View>
   );
 }

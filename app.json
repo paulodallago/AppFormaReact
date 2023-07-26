@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "appForma",
+    "slug": "appForma",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "65cda250-1054-4c32-b64a-195b79c2bc58"
+      }
+    }
+  }
+}

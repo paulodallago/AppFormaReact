@@ -15,17 +15,19 @@ const theme = {
         txt: 'black',
         txt2: 'white',
         header: lgBlue,
-        textBorder: '#aaaaaa'
+        textBorder: '#aaaaaa',
+        sBtn: lgBlue, 
     },
     dark: {
         theme: 'dark',
-        bg: '#18181a',
-        btn: dkBlue,
-        btnBorder: '#333333',
+        bg: '#111',
+        btn: '#222',
+        btnBorder: '#222',
         txt: 'white',
-        txt2: 'black',
+        txt2: 'white',
         header: dkBlue,
-        textBorder: '#333333'
+        textBorder: '#333333',
+        sBtn: dkBlue,
     }
 }
 

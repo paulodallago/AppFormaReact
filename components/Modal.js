@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Animated, Dimensions } from 'react-native';
+import { View, StyleSheet, Animated, Dimensions, TouchableWithoutFeedback} from 'react-native';
 import FormModal from '../forms/FormModal';
 
 const { height } = Dimensions.get('window');
@@ -21,13 +21,15 @@ const Modal = ({ show, close, data }) => {
 
     const closeModal = () => {
         Animated.sequence([
-        Animated.timing(state.modal, { toValue: height, duration: 250, useNativeDriver: true }),
-        Animated.timing(state.opacity, { toValue: 0, duration: 300 }),
-        Animated.timing(state.container, { toValue: height, duration: 100 })
+        Animated.timing(state.modal, { toValue: height, duration: 150, useNativeDriver: true }),
+        Animated.timing(state.opacity, { toValue: 0, duration: 50 }),
+        Animated.timing(state.container, { toValue: height, duration: 10 })
         ]).start(() => {
             close();
         });
     };
+
+    const handleModalPress = () => {};
 
     useEffect(() => {
         if (show) {
@@ -38,27 +40,32 @@ const Modal = ({ show, close, data }) => {
     }, [show]);
 
      return (
-        <Animated.View
-        style={[styles.container, {
-            opacity: state.opacity,
-            transform: [
-                { translateY: state.container }
-            ]
-        }]}
-        >
+        <TouchableWithoutFeedback onPress={closeModal}>
             <Animated.View
-                style={[styles.modal, {
+            style={[styles.container, {
+                opacity: state.opacity,
                 transform: [
-                    { translateY: state.modal }
+                    { translateY: state.container }
                 ]
-                }]}
+            }]}
             >
-                <View style={styles.indicator} />
+                <Animated.View
+                    style={[styles.modal, {
+                    transform: [
+                        { translateY: state.modal }
+                    ]
+                    }]}
+                >
+                    <TouchableWithoutFeedback onPress={handleModalPress}>
+                        <View style={{ flex: 1 }}>
+                            <View style={styles.indicator} />
+                            <FormModal data={data} closeModal={closeModal} />
+                        </View>
+                    </TouchableWithoutFeedback>
 
-                <FormModal data={data} closeModal={closeModal}/>
-
+                </Animated.View>
             </Animated.View>
-        </Animated.View>
+        </TouchableWithoutFeedback>
     );
 };
 

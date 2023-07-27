@@ -3,6 +3,7 @@ import {View, Text, TextInput, StyleSheet} from 'react-native';
 import {vh, vw, bgColor, constStyles} from './Constants';
 import MyText from './MyText';
 import Context from '../context'; 
+import { useController } from 'react-hook-form';
 
 const TextField = props =>  {
   const theme = useContext(Context);
@@ -25,7 +26,7 @@ const TextField = props =>  {
   return (
     <View>
       <MyText style={styles.label} text={props.text}/>
-      <TextInput style={styles.textInput} defaultValue={props.defaultValue} onChangeText={props.onChangeText} keyboardType={props.keyboard}></TextInput>
+      <TextInput style={styles.textInput} defaultValue={props.defaultValue} onChangeText={props.onChangeText} keyboardType={props.keyboard} editable={props.isEditable}></TextInput>
     </View>
   );
 }

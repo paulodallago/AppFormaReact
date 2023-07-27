@@ -11,16 +11,6 @@ import Context from "./context";
 
 const Stack = createNativeStackNavigator();
 
-const styles = StyleSheet.create({
-  header: {
-    headerStyle: {
-      backgroundColor: dkBlue,
-    },
-    headerTintColor: 'white',
-    headerTitleAlign: 'center', 
-    }
-});
-
 const App = () => {
   const [mode, setMode] = useState(false);
 
@@ -37,8 +27,22 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator initialRoutenName="Main">
           <Stack.Screen name="Main" component={Main} options={{headerShown: false}}/>
-          <Stack.Screen name="Form" component={Form} options={styles.header}/>
-          <Stack.Screen name="List" component={List} options={styles.header}/>
+          <Stack.Screen name="Form" component={Form} options={{
+            headerStyle: {
+              backgroundColor: dkBlue,
+            },
+            headerTintColor: 'white',
+            headerTitleAlign: 'center',
+            title: 'Formulário' 
+          }}/>
+          <Stack.Screen name="List" component={List} options={{
+            headerStyle: {
+              backgroundColor: dkBlue,
+            },
+            headerTintColor: 'white',
+            headerTitleAlign: 'center',
+            title: 'Lista' 
+          }}/>
         </Stack.Navigator>
       </NavigationContainer>
     </Context.Provider>

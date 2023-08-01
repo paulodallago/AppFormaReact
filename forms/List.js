@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Modal from '../components/Modal';
 import ListButton from '../components/ListButton';
-import { lgBlue, dkBlue, vh, vw} from '../components/Constants';
+import {vh, vw, bgColor, lgBlue, dkBlue, theme} from '../Constants';
 import Context from '../context'; 
 
 const items = [
@@ -44,7 +44,7 @@ const emptyObj = {
   "tipo": ""
 }
 
-const List = ({ navigation }) => {
+const List = () => {
   const theme = useContext(Context);
   const styles = StyleSheet.create({
     rndButton: {
@@ -78,7 +78,7 @@ const List = ({ navigation }) => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: theme.bg}}>
       <View style={{flex: 1, marginTop: 20}}>
         {items.map((item, index) => (
           <ListButton key={index} item={item} onPress={() => showItem(item)} />

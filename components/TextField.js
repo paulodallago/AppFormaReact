@@ -1,9 +1,8 @@
 import React, {useContext} from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
-import {vh, vw, bgColor, constStyles} from './Constants';
+import {vh, vw, bgColor, constStyles} from '../Constants';
 import MyText from './MyText';
 import Context from '../context'; 
-import { useController } from 'react-hook-form';
 
 const TextField = props =>  {
   const theme = useContext(Context);

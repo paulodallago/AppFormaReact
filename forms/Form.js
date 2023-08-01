@@ -3,7 +3,7 @@ import {Text, View, StyleSheet, Alert, TouchableOpacity} from 'react-native';
 import Header from '../components/Header';
 import TextField from '../components/TextField';
 import { ScrollView } from 'react-native-gesture-handler';
-import {vh, vw, bgColor, dkBlue, lgBlue} from '../components/Constants';
+import {vh, vw, bgColor, dkBlue, lgBlue} from '../Constants';
 import SimpleButton from '../components/SimpleButton';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -17,7 +17,7 @@ const fieldValidationSchema = yup.object().shape({
     .required('O nome não pode ser vazio')
 })
 
-const Form = ({navigation}) =>  {
+const Form = () =>  {
   const theme = useContext(Context);
   const styles = StyleSheet.create({
     scroll: {
@@ -30,7 +30,7 @@ const Form = ({navigation}) =>  {
       marginTop: 5*vh,
     },
   })
-  const { register, setValue, handleSubmit } = useForm({validationSchema: fieldValidationSchema});
+  const {register, setValue, handleSubmit} = useForm({validationSchema: fieldValidationSchema});
   useEffect(() => {
     register('nome')
   }, [register]);

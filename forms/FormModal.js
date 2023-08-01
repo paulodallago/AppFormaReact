@@ -1,8 +1,8 @@
 import React, {useEffect, useContext, useState} from 'react';
-import {Text, View, StyleSheet, Alert, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Alert, TouchableOpacity} from 'react-native';
 import TextField from '../components/TextField';
 import { ScrollView } from 'react-native-gesture-handler';
-import {vh, vw, bgColor, dkBlue, lgBlue} from '../components/Constants';
+import {vh, vw, bgColor, lgBlue, dkBlue, theme} from '../Constants';
 import SimpleButton from '../components/SimpleButton';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -16,8 +16,8 @@ const fieldValidationSchema = yup.object().shape({
     .required('O nome não pode ser vazio')
 })
 
-const FormModal = ({ navigation, data, closeModal }) => {
-    const {control, register, setValue, handleSubmit, errors, reset} = useForm({
+const FormModal = ({data, closeModal}) => {
+    const {register, setValue, handleSubmit, reset} = useForm({
         validationSchema: fieldValidationSchema,
         defaultValues: data,
     });
@@ -62,7 +62,6 @@ const FormModal = ({ navigation, data, closeModal }) => {
     }, [register]);
 
     const onSubmit = (fdata) => {
-        // You can access the form data directly from the formData object
         Alert.alert(JSON.stringify(data));
     };
 

@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {View, Image, StyleSheet} from 'react-native';
-import {vh, vw} from './Constants';
+import {vh, vw} from '../Constants';
 import Context from '../context'; 
 
 const Header = () => {

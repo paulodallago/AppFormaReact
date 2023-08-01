@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Animated, Dimensions, TouchableWithoutFeedback} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, StyleSheet, Animated, Dimensions, TouchableWithoutFeedback} from 'react-native';
 import FormModal from '../forms/FormModal';
 
 const { height } = Dimensions.get('window');

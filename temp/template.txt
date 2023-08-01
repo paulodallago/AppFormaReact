@@ -4,20 +4,18 @@ import { ScrollView } from 'react-native-gesture-handler';
 import {vh, vw, bgColor, lgBlue, dkBlue} from '../components/Constants';
 import Context from '../context';
 
-const styles = StyleSheet.create({
-    main: {
-      component
-    },
-})
-
 const component = ({navigation}) =>  {
-  return (
-    <ScrollView style={{backgroundColor: 'white'}}>
-      <View style={styles.main}>
-        component
-      </View>
-    </ScrollView>
-  );
+    const theme = useContext(Context);
+    const styles = StyleSheet.create({
+      component
+    })
+    return (
+        <ScrollView style={{backgroundColor: 'white'}}>
+        <View style={styles.main}> 
+          component
+        </View>
+        </ScrollView>
+    );
 }
 
 export default component;

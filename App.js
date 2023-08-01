@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import {View, StyleSheet, Alert} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {vh, vw, bgColor, lgBlue, dkBlue, theme} from './components/Constants';
+import {vh, vw, bgColor, lgBlue, dkBlue, theme} from './Constants';
 import Main from "./forms/Main";
 import Form from "./forms/Form";
 import List from "./forms/List";
+import Agenda from "./forms/Agenda";
+import Checklist from "./forms/Checklist";
 import {EventRegister} from "react-native-event-listeners";
 import Context from "./context";
 
@@ -42,6 +44,22 @@ const App = () => {
             headerTintColor: 'white',
             headerTitleAlign: 'center',
             title: 'Lista' 
+          }}/>
+          <Stack.Screen name="Checklist" component={Checklist} options={{
+            headerStyle: {
+              backgroundColor: dkBlue,
+            },
+            headerTintColor: 'white',
+            headerTitleAlign: 'center',
+            title: 'Checklist' 
+          }}/>
+          <Stack.Screen name="Agenda" component={Agenda} options={{
+            headerStyle: {
+              backgroundColor: dkBlue,
+            },
+            headerTintColor: 'white',
+            headerTitleAlign: 'center',
+            title: 'Agenda' 
           }}/>
         </Stack.Navigator>
       </NavigationContainer>

@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
-import {vh, vw, bgColor, lgBlue, dkBlue} from './Constants';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {vh, vw, bgColor, lgBlue, dkBlue, theme} from '../Constants';
 import MyText from './MyText';
 import Context from '../context'; 
 

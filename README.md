@@ -1,6 +1,6 @@
 # AppForma
 
-Aplicativo mobile desenvolvido em **React Native** para atender às demandas de um **escritório de arquitetura**.
+Aplicativo mobile desenvolvido para atender às demandas de um escritório de arquitetura.
 
 ## Sobre
 
